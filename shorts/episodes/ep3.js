@@ -89,10 +89,10 @@ boot(() => {
       P.curve(c, f, -3, 4, { p: prog(lt, 0.2, 1.0), a: al });
       P.label(c, 'S', 0.5, -0.9, { size: 72, a: prog(lt, 2.2, 0.4) });
     });
-    item('$y=a(x-\\alpha)(x-\\beta)$', { x: 540, y: 985, size: 42, color: C.cyan, t0: s + 0.8, t1: e });
-    item('$S=\\dfrac{|a|}{6}(\\beta-\\alpha)^3$', { y: 1165, size: 66, cls: 'card hl', t0: s + 2.6, t1: e, anim: 'pop', sfx: 'pop' });
-    item('앞의 예: $-x^2-3x+4=-(x+4)(x-1)$', { y: 1290, size: 42, t0: s + 6.0, t1: e });
-    item('$\\dfrac{|-1|}{6}\\{1-(-4)\\}^3=\\dfrac{125}{6}$ ✅', { y: 1400, size: 50, t0: s + 7.2, t1: e, anim: 'pop', sfx: 'pop' });
+    item('$y=a(x-\\alpha)(x-\\beta)$', { x: 540, y: 1045, size: 42, color: C.cyan, t0: s + 0.8, t1: e });
+    item('$S=\\dfrac{|a|}{6}(\\beta-\\alpha)^3$', { y: 1185, size: 66, cls: 'card hl', t0: s + 2.6, t1: e, anim: 'pop', sfx: 'pop' });
+    item('앞의 예: $-x^2-3x+4=-(x+4)(x-1)$', { y: 1335, size: 42, t0: s + 6.0, t1: e });
+    item('$\\dfrac{\\lvert -1\\rvert}{6}\\{1-(-4)\\}^3=\\dfrac{125}{6}$ ✅', { y: 1435, size: 48, t0: s + 7.2, t1: e, anim: 'pop', sfx: 'pop' });
     cap('포물선과 직선(x축) 사이 넓이 <b>꿀팁</b>!', s + 0.3, s + 5.9);
     cap('교점 α, β만 알면 끝! 앞의 <b>125/6</b>과 같죠?', s + 6.0, e - 0.1);
   });
