@@ -188,6 +188,7 @@ function ctext(c, s, x, y, o = {}) {
   c.save();
   c.font = o.font ?? `${o.italic === false ? '' : 'italic '}${o.size ?? 40}px ${o.family ?? 'KaTeX_Math'}`;
   c.fillStyle = o.color ?? C.ink;
+  if (o.a !== undefined) c.globalAlpha *= o.a;
   c.textAlign = o.align ?? 'center';
   c.textBaseline = o.base ?? 'middle';
   if (o.shadow) { c.shadowColor = 'rgba(0,0,0,0.6)'; c.shadowBlur = 12; }
