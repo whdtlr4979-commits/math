@@ -6,3 +6,5 @@ out/*_silent.mp4
 out/stills/
 out/*.log
 out/integral_all.mp4
+out/*_part*.mp4
+out/*_parts.txt
