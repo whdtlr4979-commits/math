@@ -1,0 +1,26 @@
+# 미적분Ⅰ Ⅲ. 적분 — 단원별 개념 숏츠
+
+교사용 지도서(Ⅲ-1 부정적분과 정적분, Ⅲ-2 정적분의 활용)를 바탕으로 만든 세로형(1080×1920, 30fps) 모션그래픽 숏츠입니다.
+
+| 편 | 단원 | 영상 | 다루는 개념 |
+|---|---|---|---|
+| EP.1 | 부정적분 | `out/ep1.mp4` | 미분의 역연산, 적분상수 C의 기하적 의미(평행이동), $\int x^n dx$ 공식, 실수배·합·차 |
+| EP.2 | 정적분 | `out/ep2.mp4` | 넓이로 정의한 정적분, $S_1-S_2$, 미적분의 기본정리, $F(b)-F(a)$, 구간 분할·대칭 |
+| EP.3 | 넓이 | `out/ep3.mp4` | $\int\lvert f\rvert dx$, 두 곡선 사이의 넓이(위−아래), 평행이동 불변, $\frac{\lvert a\rvert}{6}(\beta-\alpha)^3$ |
+| EP.4 | 속도와 거리 | `out/ep4.mp4` | 위치·속도·가속도 관계, 위치의 변화량 vs 움직인 거리, 연직 위로 던진 공 |
+
+`out/integral_all.mp4`는 4편을 이어 붙인 합본입니다.
+예제 수치는 지도서의 문제(예: $\int_{-2}^{1}(x+1)dx=\frac32$, $v=3t^2-12$일 때 움직인 거리 37, $v=20-10t$ 공의 최고 높이 20m)를 그대로 사용했습니다.
+
+## 다시 만들기
+
+```bash
+npm install                 # katex, pretendard, playwright
+node render.mjs ep1         # → out/ep1.mp4 (ep1~ep4)
+node render.mjs ep1 --stills 5,12   # 확인용 정지 화면 → out/stills/
+```
+
+- 화면: `episodes/epN.js` (장면 스크립트) + `lib/engine.js` (시간 t의 함수로 그리는 미니 엔진, KaTeX 수식)
+- 브라우저에서 `episodes/epN.html`을 열면 미리보기가 반복 재생됩니다.
+- 소리: `music.py`가 배경음악과 효과음을 직접 합성합니다(외부 음원 없음).
+- 글꼴: Pretendard (SIL OFL), KaTeX 글꼴 (MIT)

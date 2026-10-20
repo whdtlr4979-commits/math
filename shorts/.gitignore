@@ -1,0 +1,7 @@
+node_modules/
+frames/
+out/*.wav
+out/*.json
+out/*_silent.mp4
+out/stills/
+out/*.log

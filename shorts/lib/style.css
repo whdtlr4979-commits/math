@@ -1,0 +1,73 @@
+@import url('../node_modules/pretendard/dist/web/variable/pretendardvariable.css');
+
+:root {
+  --bg: #0e1124;
+  --ink: #f4f5fb;
+  --dim: #a9aecb;
+  --pink: #ff6b8b;
+  --purple: #a78bfa;
+  --green: #5ee0b0;
+  --yellow: #ffd166;
+  --cyan: #5ad1ff;
+  --card: rgba(255, 255, 255, 0.07);
+  --line: rgba(255, 255, 255, 0.16);
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 1080px;
+  height: 1920px;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Pretendard Variable', sans-serif;
+}
+
+#stage { position: relative; width: 1080px; height: 1920px; }
+#cv { position: absolute; inset: 0; }
+#layer { position: absolute; inset: 0; }
+
+.it {
+  position: absolute;
+  white-space: nowrap;
+  line-height: 1.35;
+  will-change: transform, opacity;
+}
+.it.wrap { white-space: normal; }
+.it b { color: var(--yellow); font-weight: 800; }
+.it em { font-style: normal; color: var(--pink); font-weight: 800; }
+.it i.p { font-style: normal; color: var(--purple); font-weight: 800; }
+.it i.g { font-style: normal; color: var(--green); font-weight: 800; }
+.it i.c { font-style: normal; color: var(--cyan); font-weight: 800; }
+
+.card {
+  background: var(--card);
+  border: 2px solid var(--line);
+  border-radius: 28px;
+  padding: 22px 36px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+}
+.card.hl { border-color: var(--yellow); background: rgba(255, 209, 102, 0.1); }
+.card.pk { border-color: var(--pink); background: rgba(255, 107, 139, 0.12); }
+
+.cap {
+  background: rgba(8, 10, 24, 0.82);
+  border-radius: 26px;
+  padding: 20px 34px;
+  font-weight: 700;
+  text-align: center;
+  white-space: normal;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.chip {
+  display: inline-block;
+  padding: 10px 26px;
+  border-radius: 999px;
+  background: var(--pink);
+  color: #fff;
+  font-weight: 800;
+}
+.ghost { color: var(--dim); }
+.katex { font-size: 1.12em; }
