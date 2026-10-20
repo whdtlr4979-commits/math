@@ -10,7 +10,11 @@
 | EP.3 | 넓이 | `out/ep3.mp4` | $\int\lvert f\rvert dx$, 두 곡선 사이의 넓이(위−아래), 평행이동 불변, $\frac{\lvert a\rvert}{6}(\beta-\alpha)^3$ |
 | EP.4 | 속도와 거리 | `out/ep4.mp4` | 위치·속도·가속도 관계, 위치의 변화량 vs 움직인 거리, 연직 위로 던진 공 |
 
-합본(`out/integral_all.mp4`)은 용량 때문에 저장소에 넣지 않았습니다. ffmpeg concat으로 0~4편을 이어 붙이면 됩니다.
+**가로 16:9 통합본** `out/full.mp4` (1920×1080, 약 5분): 오프닝 → CH.0~4 → 단원 전체 개념 지도까지 한 흐름으로 이어지는 수업·유튜브용 버전입니다 (`episodes/full.js`).
+
+**자막 원고** `scripts/`: 편별 SRT(`ep0~4.srt`), 세로 합본용 `integral_all.srt`, 가로 통합본용 `full.srt`, 읽기용 `자막원고.md` (`node subs.mjs`로 다시 뽑을 수 있음).
+
+세로 합본(`out/integral_all.mp4`)은 용량 때문에 저장소에 넣지 않았습니다. ffmpeg concat으로 0~4편을 이어 붙이면 됩니다.
 예제 수치는 지도서의 문제(예: $\int_{-2}^{1}(x+1)dx=\frac32$, $v=3t^2-12$일 때 움직인 거리 37, $v=20-10t$ 공의 최고 높이 20m)를 그대로 사용했습니다.
 
 ## 다시 만들기
@@ -19,6 +23,8 @@
 npm install                 # katex, pretendard, playwright
 node render.mjs ep1         # → out/ep1.mp4 (ep0~ep4)
 node render.mjs ep1 --stills 5,12   # 확인용 정지 화면 → out/stills/
+node render.mjs full --parts 6      # 가로 통합본, 6구간 병렬 렌더링
+node subs.mjs                       # 자막 원고(SRT, Markdown) 추출
 ```
 
 - 화면: `episodes/epN.js` (장면 스크립트) + `lib/engine.js` (시간 t의 함수로 그리는 미니 엔진, KaTeX 수식)

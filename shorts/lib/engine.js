@@ -1,6 +1,8 @@
 // 숏츠용 미니 모션그래픽 엔진.
 // 모든 애니메이션은 시간 t(초)의 순수 함수이므로 setTime(t)로 임의 프레임을 결정적으로 그릴 수 있다.
-const W = 1080, H = 1920;
+const W = window.STAGE_W ?? 1080, H = window.STAGE_H ?? 1920;
+const LAND = W > H;
+for (const el of [document.documentElement, document.body, document.getElementById('stage')]) { el.style.width = W + 'px'; el.style.height = H + 'px'; }
 const C = {
   bg0: '#0e1124', bg1: '#1a1d3d', ink: '#f4f5fb', dim: '#a9aecb',
   pink: '#ff6b8b', purple: '#a78bfa', green: '#5ee0b0', yellow: '#ffd166', cyan: '#5ad1ff',
@@ -78,6 +80,7 @@ function item(html, o = {}) {
   const it = {
     el, t0: o.t0 ?? 0, t1: o.t1 ?? 1e9, din: o.din ?? 0.5, dout: o.dout ?? 0.35,
     anim: o.anim ?? 'up', ax: o.ax ?? 0.5, ay: o.ay ?? 0.5, upd: o.upd, z: o.z ?? 0,
+    src: html, cls: o.cls || '',
   };
   st.zIndex = it.z;
   if (o.sfx !== false && o.sfx !== undefined) T.cues.push({ t: it.t0, type: o.sfx });
@@ -87,7 +90,7 @@ function item(html, o = {}) {
 
 // 자막 (화면 하단 안전 영역)
 function cap(html, t0, t1, o = {}) {
-  return item(html, { x: W / 2, y: o.y ?? 1560, w: o.w ?? 960, size: o.size ?? 50, cls: 'cap', t0, t1, anim: 'up', din: 0.35, dout: 0.25, z: 50 });
+  return item(html, { x: W / 2, y: o.y ?? (LAND ? 992 : 1560), w: o.w ?? (LAND ? 1500 : 960), size: o.size ?? (LAND ? 44 : 50), cls: 'cap', t0, t1, anim: 'up', din: 0.35, dout: 0.25, z: 50 });
 }
 
 function applyItem(it, t) {
@@ -130,9 +133,9 @@ function drawBackground(t) {
   ctx.save();
   ctx.fillStyle = 'rgba(255,255,255,0.035)';
   ctx.font = 'italic 300px KaTeX_Size2';
-  ctx.fillText('∫', 760 + 20 * Math.sin(t * 0.4), 1850 - ((t * 18) % 400));
+  ctx.fillText('∫', W * 0.7 + 20 * Math.sin(t * 0.4), H - 70 - ((t * 18) % 400));
   ctx.font = 'italic 220px KaTeX_Size2';
-  ctx.fillText('∫', 40 + 15 * Math.cos(t * 0.5), 760 + 30 * Math.sin(t * 0.35));
+  ctx.fillText('∫', 40 + 15 * Math.cos(t * 0.5), H * 0.4 + 30 * Math.sin(t * 0.35));
   ctx.restore();
 }
 
